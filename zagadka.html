@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zagadki na Randkę</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            text-align: center;
+            background-color: #ffccff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 600px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: calc(100% - 24px);
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #0078d4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        .correct-answer {
+            font-size: 16px;
+            color: green;
+        }
+        .wrong-answer {
+            font-size: 16px;
+            color: red;
+        }
+        .envelope {
+            font-size: 48px;
+            cursor: pointer;
+            display: none;
+            margin-top: 30px;
+        }
+        .envelope:hover {
+            color: #0078d4;
+        }
+        <style>
+/* Stylowanie Koła Fortuny */
+body {
+    font-family: 'Lora', serif;
+    text-align: center;
+    background-color: #ffccff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.wheel-container {
+    position: relative;
+    margin: 50px auto;
+    width: 300px;
+    height: 300px;
+}
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 10px solid #333;
+    background: conic-gradient(
+        #ff9999 0% 25%,
+        #ffcc66 25% 50%,
+        #66ccff 50% 75%,
+        #99ff99 75% 100%
+    );
+    transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    transform: rotate(0deg);
+}
+.pointer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 60px;
+    background-color: red;
+    transform: translate(-50%, -70%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+#spinResult {
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0078d4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #005fa3;
+}
+</style>
+
+    </style>
+</head>
+<body>
+    <!-- Zagadki -->
+    <div class="container" id="step1">
+        <h1> Witam w najbardziej niesamowitym quizie na tej planecie!</h1>
+        <p><strong> Która stolica europejska jest najbardziej wysunięta na południe?</strong></p>
+        <input type="text" id="answer1" placeholder="Twoja odpowiedź">
+        <button onclick="checkAnswer1()">Dalej</button>
+        <p id="error1" class="wrong-answer" style="display: none;">Nieprawidłowa odpowiedź. Spróbuj ponownie!</p>
+    </div>
+
+    <div class="container" id="step2" style="display: none;">
+        <h1>brawo❤️ 10% :</h1>
+        <p><strong> Jaka jest nazwa procesu, w którym energia wewnętrzna systemu zmienia się wyłącznie w wyniku pracy wykonanej nad systemem lub przez system, bez wymiany ciepła?</strong></p>
+        <input type="text" id="answer2" placeholder="Twoja odpowiedź">
+        <button onclick="checkAnswer2()">Dalej</button>
+        <p id="error2" class="wrong-answer" style="display: none;">Nieprawidłowa odpowiedź. Spróbuj ponownie!</p>
+    </div>
+
+    <div class="container" id="step3" style="display: none;">
+        <h1>brawo❤️ 20%:</h1>
+        <p><strong> Stoisz na początku drogi, która składa się z 5 kroków. Każdy krok jest w innym kolorze: czerwony, niebieski, zielony, żółty i biały. Jeśli robisz krok na czerwonym, przesuwasz się o 3 kroki do przodu. Na niebieskim robisz krok o 2 do tyłu. Na zielonym przeskakujesz o 1 krok do przodu. Na żółtym robisz 2 kroki do tyłu. Na białym stoisz w miejscu.
+  Po wykonaniu wszystkich kroków, na jakim kolorze staniesz?</strong></p>
+        <input type="text" id="answer3" placeholder="Twoja odpowiedź">
+        <button onclick="checkAnswer3()">Dalej</button>
+        <p id="error3" class="wrong-answer" style="display: none;">Nieprawidłowa odpowiedź. Spróbuj ponownie!</p>
+    </div>
+
+    <div class="container" id="step4" style="display: none;">
+        <h1>brawo❤️ 30%:</h1>
+        <p><strong> Jak nazywa się płaczący raczek?</strong></p>
+        <input type="text" id="answer4" placeholder="Twoja odpowiedź">
+        <button onclick="checkAnswer4()">Dalej</button>
+        <p id="error4" class="wrong-answer" style="display: none;">Nieprawidłowa odpowiedź. Spróbuj ponownie!</p>
+    </div>
+
+    <div class="container" id="step5" style="display: none;">
+        <h1>brawo❤️ 40%:</h1>
+        <p><strong> Jak nazywają się drony wykorzystywane do badania dna morskiego? napisz skrótem </strong></p>
+        <input type="text" id="answer5" placeholder="Twoja odpowiedź">
+        <button onclick="checkAnswer5()">Dalej</button>
+        <p id="error5" class="wrong-answer" style="display: none;">Nieprawidłowa odpowiedź. Spróbuj ponownie!</p>
+    </div>
+
+    <div class="container" id="step6" style="display: none;">
+        <h1>brawo❤️ 50%:</h1>
+        <p><strong> Rozszyfruj ciąg na końcu, stosując zasadę, że każda litera została przesunięta o 1 miejsce w alfabecie do przodu. Lptzopjfsb </strong></p>
+        <input type="text" id="answer6" placeholder="Twoja odpowiedź">
+        <button onclick="checkAnswer6()">Dalej</button>
+        <p id="error6" class="wrong-answer" style="display: none;">Nieprawidłowa odpowiedź. Spróbuj ponownie!</p>
+    </div>
+
+    <div class="container" id="step7" style="display: none;">
+        <h1>brawo❤️ 60%:</h1>
+        <p><strong> Jakiego dokładnie miesa uzywa sie do oryginalnej włoskiej carbonary? </strong></p>
+        <input type="text" id="answer7" placeholder="Twoja odpowiedź">
+        <button onclick="checkAnswer7()">Dalej</button>
+        <p id="error7" class="wrong-answer" style="display: none;">Nieprawidłowa odpowiedź. Spróbuj ponownie!</p>
+    </div>
+
+    <div class="container" id="step8" style="display: none;">
+        <h1>brawo❤️ 70%:</h1>
+        <p><strong> Z którego dnia miesiąca, dostałam od ciebie pierwszy bilet parkingowy? Podpowiedz:11101 </strong></p>
+        <input type="text" id="answer8" placeholder="Twoja odpowiedź">
+        <button onclick="checkAnswer8()">Dalej</button>
+        <p id="error8" class="wrong-answer" style="display: none;">Nieprawidłowa odpowiedź. Spróbuj ponownie!</p>
+    </div>
+
+    <div class="container" id="step9" style="display: none;">
+        <h1>brawo❤️ 80%:</h1>
+        <p><strong> W jakim miesiącu miała miejsce światowa premiera filmu, który obejrzeliśmy razem po raz pierwszy? Nazwę miesiąca napisz po francusku</strong></p>
+        <input type="text" id="answer9" placeholder="Twoja odpowiedź">
+        <button onclick="checkAnswer9()">Dalej</button>
+        <p id="error9" class="wrong-answer" style="display: none;">Nieprawidłowa odpowiedź. Spróbuj ponownie!</p>
+    </div>
+
+    <div class="container" id="step10" style="display: none;">
+        <h1>brawo❤️ 90%:</h1>
+        <p><strong> Jakim singlem, rozpoczęła karierę solową Teresa Werner w 1991 na a Festiwalu Piosenki Ludowej w Republice Południowej Afryki? </strong></p>
+        <input type="text" id="answer10" placeholder="Twoja odpowiedź">
+        <button onclick="checkAnswer10()">Zakończ</button>
+        <p id="error10" class="wrong-answer" style="display: none;">Nieprawidłowa odpowiedź. Spróbuj ponownie!</p>
+    </div>
+
+      <!-- Ostatni etap -->
+      <div class="container" id="finalStep" style="display: none;">
+        <h1>Brawo!</h1>
+        <p>Rozwiązałeś wszystkie zagadki!</p>
+        <p>Teraz czas na niespodziankę: Zapraszam Cię na randkę ❤️</p>
+        <button onclick="acceptInvite()">Zaakceptuj</button>
+        <button onclick="rejectInvite()">Odrzuć</button>
+    </div>
+
+    <!-- Slajd z kołem fortuny -->
+    <div class="container" id="wheelStep" style="display: none;">
+        <h1>Koło Fortuny</h1>
+        <div class="wheel" onclick="spinWheel()">
+            <p id="wheelResult">Kliknij, aby zakręcić</p>
+        </div>
+    </div>
+
+    <!-- Skrypt -->
+    <script>
+        function completeLastQuestion() {
+            document.getElementById('questionsStep').style.display = 'none';
+            document.getElementById('finalStep').style.display = 'block';
+        }
+
+        function acceptInvite() {
+            document.getElementById('finalStep').style.display = 'none';
+            document.getElementById('wheelStep').style.display = 'block';
+        }
+
+        function rejectInvite() {
+            alert("Może innym razem 😊");
+        }
+
+        function spinWheel() {
+            const options = [" Film : Glass", "Kuchenne Rewolucje", "Fajny Horror", "Granie w planszówke", "Spacerek"];
+            const randomOption = options[Math.floor(Math.random() * options.length)];
+            document.getElementById('wheelResult').textContent = `Wylosowano: ${randomOption}`;
+        }
+    </script>
+</body>
+</html>
+
+    <script>
+        // Funkcje do sprawdzania odpowiedzi dla każdej zagadki
+        function checkAnswer1() {
+            const answer = document.getElementById('answer1').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('error1');
+            if (answer === 'valletta') {
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function checkAnswer2() {
+            const answer = document.getElementById('answer2').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('error2');
+            if (answer === 'adiabatyczny') {
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step3').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function checkAnswer3() {
+            const answer = document.getElementById('answer3').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('error3');
+            if (answer === 'czerwony') {
+                document.getElementById('step3').style.display = 'none';
+                document.getElementById('step4').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function checkAnswer4() {
+            const answer = document.getElementById('answer4').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('error4');
+            if (answer === 'wycieraczka') {
+                document.getElementById('step4').style.display = 'none';
+                document.getElementById('step5').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function checkAnswer5() {
+            const answer = document.getElementById('answer5').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('error5');
+            if (answer === 'aux') {
+                document.getElementById('step5').style.display = 'none';
+                document.getElementById('step6').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function checkAnswer6() {
+            const answer = document.getElementById('answer6').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('error6');
+            if (answer === 'kosynierzy') {
+                document.getElementById('step6').style.display = 'none';
+                document.getElementById('step7').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function checkAnswer7() {
+            const answer = document.getElementById('answer7').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('error7');
+            if (answer === 'guanciale') {
+                document.getElementById('step7').style.display = 'none';
+                document.getElementById('step8').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function checkAnswer8() {
+            const answer = document.getElementById('answer8').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('error8');
+            if (answer === '29') {
+                document.getElementById('step8').style.display = 'none';
+                document.getElementById('step9').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function checkAnswer9() {
+            const answer = document.getElementById('answer9').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('error9');
+            if (answer === 'mai') {
+                document.getElementById('step9').style.display = 'none';
+                document.getElementById('step10').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function checkAnswer10() {
+            const answer = document.getElementById('answer10').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('error10');
+            if (answer === 'miłość jest piękna') {
+                document.getElementById('step10').style.display = 'none';
+                document.getElementById('finalStep').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function revealEnvelope() {
+            const envelope = document.getElementById('envelope');
+            alert("To była niespodzianka! Czas na randkę ❤️");
+        }
+    </script>
+</body>
+</html>
+
+
+
